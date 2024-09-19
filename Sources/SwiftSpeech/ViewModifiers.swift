@@ -150,6 +150,9 @@ public extension SwiftSpeech.ViewModifiers {
         
         var gesture: some Gesture {
             TapGesture()
+                .onChanged { _ in
+                    withAnimation(self.animation, self.startRecording)
+                }
                 .onEnded {
                     withAnimation(self.animation) {
                         if self.viewComponentState == .pending {  // if not recording
